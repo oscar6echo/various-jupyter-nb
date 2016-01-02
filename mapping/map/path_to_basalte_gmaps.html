@@ -1,0 +1,45 @@
+
+<div id="map_canvas" style="width:900px; height:600px;"></div>
+
+<script defer src='http://maps.googleapis.com/maps/api/js?sensor=true&callback=init'>
+</script>
+
+<script>
+function init() {
+  console.log('Google Maps API loaded');
+  var map = new google.maps.Map(document.getElementById('map_canvas'), {
+    zoom: 16,
+    center: {lat: 48.892306, lng: 2.234720},
+    // mapTypeId: google.maps.MapTypeId.TERRAIN
+    // mapTypeId: google.maps.MapTypeId.SATELLITE
+    mapTypeId: google.maps.MapTypeId.HYBRID
+  });
+
+  var walkPathCoords = [
+    {lat: 48.8920, lng: 2.2378},
+    {lat: 48.891822, lng: 2.236138},
+    {lat: 48.892499, lng: 2.233689},
+    {lat: 48.891981, lng: 2.231463},
+    {lat: 48.891456, lng: 2.23115}
+  ];
+
+  var walkPath = new google.maps.Polyline({
+    path: walkPathCoords,
+    geodesic: true,
+    strokeColor: '#FF0000',
+    strokeOpacity: 1.0,
+    strokeWeight: 2
+  });
+
+  walkPath.setMap(map);
+
+  var marker = new google.maps.Marker({
+    position: {lat: 48.891310, lng: 2.231214},
+    map: map,
+    title: 'The Place: Basalte'
+  });
+  
+  window.walkPathCoords = walkPathCoords;
+  window.walkPath = walkPath;
+}
+</script>
