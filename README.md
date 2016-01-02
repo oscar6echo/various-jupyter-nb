@@ -1,3 +1,3 @@
 ## Various Jupyter notebooks
 
-For quick reference.
+For easy reference.
